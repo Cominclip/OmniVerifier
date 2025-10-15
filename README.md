@@ -13,7 +13,7 @@
         alt="Coding Datasets on Hugging Face"
     />
   </a>
-  <a href="https://huggingface.co/collections/Gen-Verse/trado-series-68beb6cd6a26c27cde9fe3af">
+  <a href="https://huggingface.co/comin/OmniVerifier-7B">
     <img 
         src="https://img.shields.io/badge/OmniVerifier%207B-Hugging%20Face%20Model-FFCC00?logo=huggingface&logoColor=yellow" 
         alt="ReasonFlux Coders on Hugging Face"
