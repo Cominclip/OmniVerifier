@@ -1,5 +1,5 @@
 <div align="center">
-<h1 style="font-size: 0.8em; margin: 0.4em 0;">Generative Universal Verifier as Multimodal Meta-Reasoner</h1></div>
+<h1 style="font-size: 0.8em; margin: 0.4em 0;">Generative Universal Verifier as Multimodal <br>Meta-Reasoner</h1></div>
 
 <p align="center">
   <a href="https://arxiv.org/abs/2509.06949">
