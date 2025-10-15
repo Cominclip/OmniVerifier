@@ -1,7 +1,5 @@
 <div align="center">
-<br>
-<h2>Generative Universal Verifier as Multimodal Meta-Reasoner</h2></div>
-
+<h1>Generative Universal Verifier as Multimodal Meta-Reasoner</h1></div>
 
 <p align="center">
   <a href="https://arxiv.org/abs/2509.06949">
