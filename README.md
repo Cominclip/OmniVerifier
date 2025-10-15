@@ -1,6 +1,6 @@
 <div align="center">
 <br>
-<h2>Generative Universal Verifier as Multimodal Meta-Reasoner</h3></div>
+<h2>Generative Universal Verifier as Multimodal Meta-Reasoner</h2></div>
 
 
 <p align="center">
@@ -22,6 +22,7 @@
     />
   </a>
 </p>
+    
 ### Introduction
 
 We introduce **Generative Universal Verifier**, a novel concept and plugin designed for next-generation multimodal reasoning in vision-language models and unified multimodal models, providing the fundamental capability of reflection and refinement on visual outcomes during the reasoning and generation process. 
