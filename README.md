@@ -2,7 +2,7 @@
 <h1 style="font-size: 0.8em; margin: 0.4em 0;">Generative Universal Verifier as Multimodal <br>Meta-Reasoner</h1></div>
 
 <p align="center">
-  <a href="https://arxiv.org/abs/2509.06949">
+  <a href="https://arxiv.org/abs/2510.13804">
     <img
       src="https://img.shields.io/badge/Paper-Arxiv-red?logo=arxiv&logoColor=red"
       alt="CURE Paper on arXiv"
@@ -97,7 +97,7 @@ python sequential_omniverifier_tts.py
 @article{zhang2025generative,
   author  = {Zhang, Xinchen and Zhang, Xiaoying and Wu, Youbin and Cao, Yanbin and Zhang, Renrui and Chu, Ruihang and Yang, Ling and Yang, Yujiu},
   title   = {Generative Universal Verifier as Multimodal Meta-Reasoner},
-  journal = {arXiv preprint arXiv:2410.07171},
+  journal = {arXiv preprint arXiv:2510.13804},
   year    = {2025}
 }
 ```
