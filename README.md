@@ -20,7 +20,7 @@
     />
   </a>
 </p>
-    
+
 ### Introduction
 
 We introduce **Generative Universal Verifier**, a novel concept and plugin designed for next-generation multimodal reasoning in vision-language models and unified multimodal models, providing the fundamental capability of reflection and refinement on visual outcomes during the reasoning and generation process. 
@@ -52,6 +52,18 @@ git clone https://github.com/Cominclip/OmniVerifier.git
 cd OmniVerifier
 pip install -e .
 ```
+
+### Quick Start: Generated Image Verification
+
+Use the following command to test **OmniVerifier-7B** on a generated image:
+
+```shell
+python inference.py
+```
+
+Please modify `image_path` and `prompt` to your own setting.
+
+The model will output both an **answer** and an **explanation** indicating whether the image is strictly aligned with the given prompt.
 
 ### Part1: ViVerBench Evaluation
 
@@ -95,10 +107,10 @@ python sequential_omniverifier_tts.py
 
 ```
 @article{zhang2025generative,
-  author  = {Zhang, Xinchen and Zhang, Xiaoying and Wu, Youbin and Cao, Yanbin and Zhang, Renrui and Chu, Ruihang and Yang, Ling and Yang, Yujiu},
-  title   = {Generative Universal Verifier as Multimodal Meta-Reasoner},
-  journal = {arXiv preprint arXiv:2510.13804},
-  year    = {2025}
+  title={Generative Universal Verifier as Multimodal Meta-Reasoner},
+  author={Zhang, Xinchen and Zhang, Xiaoying and Wu, Youbin and Cao, Yanbin and Zhang, Renrui and Chu, Ruihang and Yang, Ling and Yang, Yujiu},
+  journal={arXiv preprint arXiv:2510.13804},
+  year={2025}
 }
 ```
 
