@@ -32,6 +32,7 @@ We introduce **Generative Universal Verifier**, a novel concept and plugin desig
 OmniVerifier advances both reliable reflection during generation and scalable test-time refinement, marking a step toward more trustworthy and controllable next-generation reasoning systems.
 
 ### New Updates
+**[2025.11]** Inference code of two automated pipelines for visual verifier data construction are released.
 
 **[2025.10]** Inference code of Sequential OmniVerifier-TTS (based on Qwen-Image) is released.
 
@@ -41,7 +42,7 @@ OmniVerifier advances both reliable reflection during generation and scalable te
 
 ### TODO
 
-- [ ] Two automated data construction pipelines
+- [x] Two automated data construction pipelines
 - [ ] Sequential OmniVerifier-TTS on different backbones
 - [ ] Parallel OmniVerifier-TTS
 
