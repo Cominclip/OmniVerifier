@@ -9,6 +9,8 @@ model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
 # default processer
 processor = AutoProcessor.from_pretrained("comin/OmniVerifier-7B")
 
+SYS_PROMPT = " You should first think about the reasoning process in the mind and then provide the user with the answer. The reasoning process is enclosed within <think> </think> tags, i.e. <think> reasoning process here </think> answer here"
+
 image_path = '' # please replace it with your own image path
 prompt = '' # please replace it with the prompt you use to generate the image
 
@@ -34,7 +36,7 @@ messages = [
                 "type": "image",
                 "image": image_path,
             },
-            {"type": "text", "text": question},
+            {"type": "text", "text": SYS_PROMPT + question},
         ],
     }
 ]
