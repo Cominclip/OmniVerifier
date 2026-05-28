@@ -9,7 +9,7 @@
     />
   <a href="https://arxiv.org/abs/2605.28805">
     <img
-      src="https://img.shields.io/badge/Paper-OmniVerifier-M1-red?logo=OmniVerifier-M1&logoColor=red"
+      src="https://img.shields.io/badge/Paper-OmniVerifier--M1-red?logo=OmniVerifier-M1&logoColor=red"
       alt="CURE Paper on arXiv"
     />
   <a href="https://huggingface.co/datasets/comin/ViVerBench">
