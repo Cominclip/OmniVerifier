@@ -32,6 +32,8 @@ We introduce **Generative Universal Verifier**, a novel concept and plugin desig
 OmniVerifier advances both reliable reflection during generation and scalable test-time refinement, marking a step toward more trustworthy and controllable next-generation reasoning systems.
 
 ### New Updates
+**[2026.5]** Decoupled and joint training code of OmniVerifier-M1 is released.
+
 **[2025.11]** Inference code of two automated pipelines for visual verifier data construction are released.
 
 **[2025.10]** Inference code of Sequential OmniVerifier-TTS (based on Qwen-Image) is released.
@@ -40,11 +42,7 @@ OmniVerifier advances both reliable reflection during generation and scalable te
 
 **[2025.10]** Training code of OmniVerifier is released.
 
-### TODO
 
-- [x] Two automated data construction pipelines
-- [ ] Sequential OmniVerifier-TTS on different backbones
-- [ ] Parallel OmniVerifier-TTS
 
 ### Installation
 
@@ -102,6 +100,20 @@ We provide the code for sequential Omniverifier-TTS using Qwen-Image. You should
 
 ```shell
 python sequential_omniverifier_tts.py
+```
+
+### Part4: OmniVerifier-M1 RL Training
+
+##### Decoupled Training
+
+```bash
+bash examples/M1_decoupled_training.sh
+```
+
+##### Joint Training
+
+```bash
+bash examples/M1_joint_training.sh
 ```
 
 ## Citation
