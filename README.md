@@ -38,7 +38,11 @@ We introduce **Generative Universal Verifier**, a novel concept and plugin desig
 OmniVerifier advances both reliable reflection during generation and scalable test-time refinement, marking a step toward more trustworthy and controllable next-generation reasoning systems.
 
 ### New Updates
+**[2026.05]** [OmniVerifier-M1](https://arxiv.org/abs/2605.28805) is accepted by ICML 2026.
+
 **[2026.05]** We release [OmniVerifier-M1](https://arxiv.org/abs/2605.28805), advancing multimodal verifiers through symbolic meta-verification.
+
+**[2026.02]** [OmniVerifier-M1](https://arxiv.org/abs/2605.28805) is accepted by ICLR 2026 **(Oral Paper, Top 1%)**.
 
 **[2025.11]** Inference code of two automated pipelines for visual verifier data construction is released.
 
