@@ -4,7 +4,12 @@
 <p align="center">
   <a href="https://arxiv.org/abs/2510.13804">
     <img
-      src="https://img.shields.io/badge/Paper-Arxiv-red?logo=arxiv&logoColor=red"
+      src="https://img.shields.io/badge/Paper-Arxiv-red?logo=OmniVerifier&logoColor=red"
+      alt="CURE Paper on arXiv"
+    />
+  <a href="https://arxiv.org/abs/2605.28805">
+    <img
+      src="https://img.shields.io/badge/Paper-Arxiv-red?logo=OmniVerifier-M1&logoColor=red"
       alt="CURE Paper on arXiv"
     />
   <a href="https://huggingface.co/datasets/comin/ViVerBench">
@@ -25,14 +30,17 @@
 
 We introduce **Generative Universal Verifier**, a novel concept and plugin designed for next-generation multimodal reasoning in vision-language models and unified multimodal models, providing the fundamental capability of reflection and refinement on visual outcomes during the reasoning and generation process. 
 
-- **ViVerBench**: a comprehensive benchmark spanning 16 categories of critical tasks for evaluating visual outcomes in multimodal reasoning. 
-- **OmniVerifier-7B**: Trained on large-scale visual verification data, the first omni-capable generative verifier trained for universal visual verification and achieves notable gains on ViVerBench(+8.3). 
--  **OmniVerifier-TTS**, a sequential test-time scaling paradigm that leverages the universal verifier to bridge image generation and editing within unified models, enhancing the upper bound of generative ability through iterative fine-grained optimization. 
+- **ViVerBench**: A comprehensive benchmark spanning 16 categories of critical tasks for evaluating visual outcomes in multimodal reasoning. 
+- **OmniVerifier**: Trained on large-scale visual verification data, the first omni-capable generative verifier trained for universal visual verification and achieves notable gains on ViVerBench(+8.3). 
+- **OmniVerifier-TTS**: A sequential test-time scaling paradigm that leverages the universal verifier to bridge image generation and editing within unified models, enhancing the upper bound of generative ability through iterative fine-grained optimization.
+- **OmniVerifier-M1**: A generalist multimodal meta-verifier that leverages symbolic meta-verification and decoupled RL training to achieve robust visual verification, fine-grained error localization, and state-of-the-art performance on ViVerBench.
 
 OmniVerifier advances both reliable reflection during generation and scalable test-time refinement, marking a step toward more trustworthy and controllable next-generation reasoning systems.
 
 ### New Updates
-**[2025.11]** Inference code of two automated pipelines for visual verifier data construction are released.
+**[2026.05]** We release [OmniVerifier-M1](https://arxiv.org/abs/2605.28805), advancing multimodal verifiers through symbolic meta-verification.
+
+**[2025.11]** Inference code of two automated pipelines for visual verifier data construction is released.
 
 **[2025.10]** Inference code of Sequential OmniVerifier-TTS (based on Qwen-Image) is released.
 
@@ -40,11 +48,7 @@ OmniVerifier advances both reliable reflection during generation and scalable te
 
 **[2025.10]** Training code of OmniVerifier is released.
 
-### TODO
 
-- [x] Two automated data construction pipelines
-- [ ] Sequential OmniVerifier-TTS on different backbones
-- [ ] Parallel OmniVerifier-TTS
 
 ### Installation
 
@@ -62,9 +66,9 @@ Use the following command to test **OmniVerifier-7B** on a generated image:
 python inference.py
 ```
 
-Please modify `image_path` and `prompt` to your own setting.
+Please modify `image_path` and `prompt` to your own settings.
 
-The model will output both an **answer** and an **explanation** indicating whether the image is strictly aligned with the given prompt.
+The model will output both an **answer** and an **explanation**, indicating whether the image is strictly aligned with the given prompt.
 
 ### Part1: ViVerBench Evaluation
 
@@ -90,7 +94,7 @@ We apply DAPO to directly train Qwen2.5VL-7B without cold start:
 bash examples/qwen2_5_vl_7b_dapo.sh
 ```
 
-After training, you should merge checkpoint in Hugging Face format:
+After training, you should merge the checkpoint in Hugging Face format:
 
 ```bash
 python3 scripts/model_merger.py --local_dir checkpoints/omniverifier/exp_name/global_step_1/actor
@@ -104,6 +108,20 @@ We provide the code for sequential Omniverifier-TTS using Qwen-Image. You should
 python sequential_omniverifier_tts.py
 ```
 
+### Part4: OmniVerifier-M1 RL Training
+
+##### Decoupled Training
+
+```bash
+bash examples/M1_decoupled_training.sh
+```
+
+##### Joint Training
+
+```bash
+bash examples/M1_joint_training.sh
+```
+
 ## Citation
 
 ```
@@ -113,8 +131,14 @@ python sequential_omniverifier_tts.py
   journal={arXiv preprint arXiv:2510.13804},
   year={2025}
 }
+@article{zhang2026omniverifier,
+  title={OmniVerifier-M1: Multimodal Meta-Verifier with Explicit Structured Recalibration},
+  author={Zhang, Xinchen and Liu, Bowei and Liu, Jiale and Shi, Chufan and Zhang, Yizhen and Liu, Junhong and Zhang, Youliang and Li, Zhiheng and Yang, Yujiu and Yang, Ling},
+  journal={arXiv preprint arXiv:2605.28805},
+  year={2026}
+}
 ```
 
 ## Acknowledgements
 
-OmniVerifier is builded upon several solid works. Thanks to [EasyR1](https://github.com/hiyouga/EasyR1) and [veRL](https://github.com/volcengine/verl) for their wonderful work and codebase! 
+OmniVerifier is built upon several solid works. Thanks to [EasyR1](https://github.com/hiyouga/EasyR1) and [veRL](https://github.com/volcengine/verl) for their wonderful work and codebase! 
