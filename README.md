@@ -42,7 +42,7 @@ OmniVerifier advances both reliable reflection during generation and scalable te
 
 **[2026.05]** We release [OmniVerifier-M1](https://arxiv.org/abs/2605.28805), advancing multimodal verifiers through symbolic meta-verification.
 
-**[2026.02]** [OmniVerifier-M1](https://arxiv.org/abs/2605.28805) is accepted by ICLR 2026 **(Oral Paper, Top 1%)**.
+**[2026.02]** [OmniVerifier](https://arxiv.org/abs/2510.13804) is accepted by ICLR 2026 **(Oral Paper, Top 1%)**.
 
 **[2025.11]** Inference code of two automated pipelines for visual verifier data construction is released.
 
