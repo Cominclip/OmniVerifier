@@ -135,12 +135,12 @@ bash examples/M1_joint_training.sh
 
 ##### Pointwise verifier training
 ```shell
-bash omniverifier_c1/verifier_training/examples/pointwise_c1.sh
+bash examples/pointwise_c1.sh
 ```
 
 ##### Pairwise verifier training
 ```shell
-bash omniverifier_c1/verifier_training/examples/pairwise_c1.sh
+bash examples/pairwise_c1.sh
 ```
 
 ### Part6: Generative Model RL Training
@@ -148,11 +148,11 @@ bash omniverifier_c1/verifier_training/examples/pairwise_c1.sh
 
 ##### Pointwise verification rewards
 ```shell
-bash  omniverifier_c1/generative_model_training/examples/pointwise_verification.sh
+bash  generative_model_training/examples/pointwise_verification.sh
 ```
 ##### Pairwise verification rewards
 ```shell
-bash  omniverifier_c1/generative_model_training/examples/pairwise_verification.sh
+bash  generative_model_training/examples/pairwise_verification.sh
 ```
 
 
