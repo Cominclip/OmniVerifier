@@ -34,8 +34,12 @@ We introduce **Generative Universal Verifier**, a novel concept and plugin desig
 - **OmniVerifier**: Trained on large-scale visual verification data, the first omni-capable generative verifier trained for universal visual verification and achieves notable gains on ViVerBench(+8.3). 
 - **OmniVerifier-TTS**: A sequential test-time scaling paradigm that leverages the universal verifier to bridge image generation and editing within unified models, enhancing the upper bound of generative ability through iterative fine-grained optimization.
 - **OmniVerifier-M1**: A generalist multimodal meta-verifier that leverages symbolic meta-verification and decoupled RL training to achieve robust visual verification, fine-grained error localization, and state-of-the-art performance on ViVerBench.
+- **M1-TTS**: An agentic correction system that support robust visual verification and effective region-level self-correction across diverse generative foundation models.
+- **OmniVerifier-C1**: A decomposed graded verifier trained with Decoupled RL to provide fine-grained, interpretable continuous rewards for text-to-image generation, with reference-based pairwise verification enabling more accurate and reliable feedback for rule-governed world modeling.
 
-OmniVerifier advances both reliable reflection during generation and scalable test-time refinement, marking a step toward more trustworthy and controllable next-generation reasoning systems.
+
+The OmniVerifier series advances visual verification to critique generated outputs and provide reliable feedback for improving generation quality during both training and inference, guiding test-time refinement or generative model optimization through reinforcement learning.
+
 
 ### New Updates
 **[2026.05]** [OmniVerifier-M1](https://arxiv.org/abs/2605.28805) is accepted by ICML 2026.
@@ -94,13 +98,13 @@ python viverbench_eval_model_based.py --model_response your_model.json
 
 We apply DAPO to directly train Qwen2.5VL-7B without cold start:
 
-```bash
+```shell
 bash examples/qwen2_5_vl_7b_dapo.sh
 ```
 
 After training, you should merge the checkpoint in Hugging Face format:
 
-```bash
+```shell
 python3 scripts/model_merger.py --local_dir checkpoints/omniverifier/exp_name/global_step_1/actor
 ```
 
@@ -116,15 +120,43 @@ python sequential_omniverifier_tts.py
 
 ##### Decoupled Training
 
-```bash
+```shell
 bash examples/M1_decoupled_training.sh
 ```
 
 ##### Joint Training
 
-```bash
+```shell
 bash examples/M1_joint_training.sh
 ```
+### Part5: OmniVerifier-C1 RL Training
+
+
+
+##### Pointwise verifier training
+```shell
+bash examples/pointwise_c1.sh
+```
+
+##### Pairwise verifier training
+```shell
+bash examples/pairwise_c1.sh
+```
+
+### Part6: Generative Model RL Training
+
+
+##### Pointwise verification rewards
+```shell
+bash  generative_model_training/examples/pointwise_verification.sh
+```
+##### Pairwise verification rewards
+```shell
+bash  generative_model_training/examples/pairwise_verification.sh
+```
+
+
+
 
 ## Citation
 
