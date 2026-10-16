@@ -5,13 +5,24 @@
   <a href="https://arxiv.org/abs/2510.13804">
     <img
       src="https://img.shields.io/badge/Paper-OmniVerifier-red?logo=OmniVerifier&logoColor=red"
-      alt="CURE Paper on arXiv"
+      alt="OmniVerifier paper on arXiv"
     />
+  </a>
   <a href="https://arxiv.org/abs/2605.28805">
     <img
       src="https://img.shields.io/badge/Paper-OmniVerifier--M1-red?logo=OmniVerifier-M1&logoColor=red"
-      alt="CURE Paper on arXiv"
+      alt="OmniVerifier-M1 paper on arXiv"
     />
+  </a>
+  <a href="https://arxiv.org/abs/2610.22355">
+    <img
+      src="https://img.shields.io/badge/Paper-OmniVerifier--C1-red?logo=OmniVerifier-C1&logoColor=red"
+      alt="OmniVerifier-C1 paper on arXiv"
+    />
+  </a>
+</p>
+
+<p align="center">
   <a href="https://huggingface.co/datasets/comin/ViVerBench">
     <img 
         src="https://img.shields.io/badge/ViVerBench-Hugging%20Face%20Data-orange?logo=huggingface&logoColor=yellow" 
@@ -42,9 +53,10 @@ The OmniVerifier series advances visual verification to critique generated outpu
 
 
 ### New Updates
-**[2026.05]** [OmniVerifier-M1](https://arxiv.org/abs/2605.28805) is accepted by ICML 2026.
 
-**[2026.05]** We release [OmniVerifier-M1](https://arxiv.org/abs/2605.28805), advancing multimodal verifiers through symbolic meta-verification.
+**[2026.09]** [OmniVerifier-C1](https://arxiv.org/abs/2610.22355) is accepted at **NeurIPS 2026**! It introduces graded scoring and pairwise verification to provide finer-grained, more reliable feedback for rule-governed world modeling.
+
+**[2026.05]** [OmniVerifier-M1](https://arxiv.org/abs/2605.28805) is accepted by **ICML 2026** , advancing multimodal verifiers through symbolic meta-verification.
 
 **[2026.02]** [OmniVerifier](https://arxiv.org/abs/2510.13804) is accepted by ICLR 2026 **(Oral Paper, Top 1%)**.
 
@@ -78,85 +90,87 @@ Please modify `image_path` and `prompt` to your own settings.
 
 The model will output both an **answer** and an **explanation**, indicating whether the image is strictly aligned with the given prompt.
 
-### Part1: ViVerBench Evaluation
+Run the commands below from the repository root.
 
-We provide two evaluation approaches: **rule-based** and **model-based**. As a first step, store the model outputs in a JSON file such as `your_model.json`.
+### 1. ViVerBench Evaluation
 
-For rule-based evaluation:
+Save model responses as a JSON file, for example `your_model.json`. Choose either evaluation method:
 
-```shell
+```bash
 python viverbench_eval_rule_based.py --model_response your_model.json
 ```
 
-For model-based evaluation, we use GPT-4.1 as the judge model:
+The model-based evaluator uses GPT-4.1 through Azure OpenAI. Fill in `base_url`, `ak`, and `model_name` in `viverbench_eval_model_based.py` before running it:
 
-```shell
+```bash
 python viverbench_eval_model_based.py --model_response your_model.json
 ```
 
-### Part2: OmniVerifier RL Training
+### 2. Verifier Training
 
-We apply DAPO to directly train Qwen2.5VL-7B without cold start:
+Run the following commands from the repository root. OmniVerifier and OmniVerifier-M1 use `examples/config.yaml`; OmniVerifier-C1 uses `examples/config_c1.yaml`.
 
-```shell
+#### OmniVerifier
+
+Train Qwen2.5-VL-7B with DAPO.
+
+```bash
 bash examples/qwen2_5_vl_7b_dapo.sh
 ```
 
-After training, you should merge the checkpoint in Hugging Face format:
+#### OmniVerifier-M1
 
-```shell
-python3 scripts/model_merger.py --local_dir checkpoints/omniverifier/exp_name/global_step_1/actor
-```
 
-### Part3: OmniVerifier-TTS
+**Decoupled training:**
 
-We provide the code for sequential Omniverifier-TTS using Qwen-Image. You should first generate the step0 image and use this script for iteratively self-refine:
-
-```shell
-python sequential_omniverifier_tts.py
-```
-
-### Part4: OmniVerifier-M1 RL Training
-
-##### Decoupled Training
-
-```shell
+```bash
 bash examples/M1_decoupled_training.sh
 ```
 
-##### Joint Training
+**Joint training:**
 
-```shell
+```bash
 bash examples/M1_joint_training.sh
 ```
-### Part5: OmniVerifier-C1 RL Training
+
+#### OmniVerifier-C1
 
 
+**Pointwise verifier** Evaluate the generated image against the initial image.
 
-##### Pointwise verifier training
-```shell
+```bash
 bash examples/pointwise_c1.sh
 ```
 
-##### Pairwise verifier training
-```shell
+**Pairwise verifier** Evaluate the generated image against the initial image and a reference image.
+
+```bash
 bash examples/pairwise_c1.sh
 ```
 
-### Part6: Generative Model RL Training
 
+### 3. TTS
 
-##### Pointwise verification rewards
-```shell
-bash  generative_model_training/examples/pointwise_verification.sh
-```
-##### Pairwise verification rewards
-```shell
-bash  generative_model_training/examples/pairwise_verification.sh
+OmniVerifier-TTS uses OmniVerifier-7B to verify each Qwen-Image-Edit revision. Set `prompt` and `step0_image_path` in `sequential_omniverifier_tts.py`, then run:
+
+```bash
+python sequential_omniverifier_tts.py
 ```
 
+### 4. Generative Model Training
 
+Both configurations use `generative_model_training/config/qwen_image_edit_nft.py` to train Qwen-Image-Edit-2509 with DiffusionNFT and use the matching C1 verifier for rewards.
 
+**Pointwise verification:**
+```bash
+bash generative_model_training/examples/pointwise_verification.sh
+```
+
+**Pairwise verification:**
+
+```bash
+bash generative_model_training/examples/pairwise_verification.sh
+```
 
 ## Citation
 
@@ -171,6 +185,12 @@ bash  generative_model_training/examples/pairwise_verification.sh
   title={OmniVerifier-M1: Multimodal Meta-Verifier with Explicit Structured Recalibration},
   author={Zhang, Xinchen and Liu, Bowei and Liu, Jiale and Shi, Chufan and Zhang, Yizhen and Liu, Junhong and Zhang, Youliang and Li, Zhiheng and Yang, Yujiu and Yang, Ling},
   journal={arXiv preprint arXiv:2605.28805},
+  year={2026}
+}
+@article{liu2026omniverifier,
+  title={OmniVerifier-C1: Decomposed Graded Verifier for Rule-Governed Generative World Modeling},
+  author={Liu, Bowei and Zhang, Xinchen and Li, Xuhuan and Zhang, Tianlin and Jiang, Kaian and Liu, Jingwei and Zhao, Congyang and Qian, Yifei and Liu, Junhong and Li, Zhiheng and Yang, Yujiu and Cai, Yang and Yang, Ling},
+  journal={arXiv preprint arXiv:2610.22355},
   year={2026}
 }
 ```
